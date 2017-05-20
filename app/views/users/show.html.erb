@@ -1,0 +1,16 @@
+<h1><%=@user.email%></h1>
+
+
+<p>
+<% @user.contacts.each do |c| %>
+          
+   
+    <%= c.name %>
+	<%= c.email%>
+    <%= c.phone %>
+	<%= link_to 'Edit', edit_user_contact_path(@user) %>
+    <%= link_to 'Delete', user_contact_path(@user), method: :delete %>
+<% end %>
+</p>
+
+<%= link_to 'New contact', new_user_contact_path(@user) %>
