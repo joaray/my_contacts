@@ -3,13 +3,16 @@
 
 <p>
 <% @user.contacts.each do |c| %>
-          
-   
-    <%= c.name %>
-	<%= c.email%>
-    <%= c.phone %>
-	<%= link_to 'Edit', edit_user_contact_path(@user) %>
-    <%= link_to 'Delete', user_contact_path(@user), method: :delete %>
+      
+    <%= c.name %> 
+	<%= c.email%> 
+    <%= c.phone %> 
+	<% if c.importance==true %>
+	<%= "VIP" %> 
+	<% end %>
+	<%= link_to 'Edit', edit_user_contact_path(@user, c.id) %> 
+    <%= link_to 'Delete', user_contact_path(@user, c.id), method: :delete %> <br>
+	
 <% end %>
 </p>
 

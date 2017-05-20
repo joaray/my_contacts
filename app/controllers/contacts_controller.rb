@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   
-  def index
-  end
+  before_action :set_contact, except: [:new, :create]
 
   def new
     @contact = Contact.new
@@ -19,12 +18,20 @@ class ContactsController < ApplicationController
   end
 
   def edit
+   
   end
 
   def update
+  if @contact.update(check_params)
+    redirect_to user_path(current_user)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @contact.destroy
+    redirect_to user_path(current_user)
   end
   
   
@@ -32,5 +39,9 @@ class ContactsController < ApplicationController
 
   def check_params
       params.require(:contact).permit(:name, :email, :phone, :importance)
+  end
+  
+  def set_contact
+    @contact = Contact.find_by(id: params[:id], user_id: current_user.id)
   end
 end
