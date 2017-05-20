@@ -1,2 +1,16 @@
-<h1>Contacts#new</h1>
-<p>Find me in app/views/contacts/new.html.erb</p>
+<h1>New Contact</h1>
+
+<%= form_for [:user,@contact] do |f|%>
+<p> <%= f.label :name %>
+    <%= f.text_field :name %></p>
+<p> <%= f.label :email %>
+    <%= f.email_field :email %></p>
+<p> <%= f.label :phone %>
+    <%= f.text_field :phone %></p>
+<p><%= label :importance, "VIP" %>
+<%= f.check_box :importance %>
+  
+	
+<p> <%= f.submit "Submit" %></p>
+<p>  <%= link_to "Cancel", @user %>
+<%end%>

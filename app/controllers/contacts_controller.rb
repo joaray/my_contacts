@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  
   def index
   end
 
@@ -8,11 +9,10 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(check_params)
-    @contact.user_id = @current_user.id
+    @contact.user_id = current_user.id
 
     if @contact.save
-      #@contact = contact.find_by(user_id: @current_user.id, title: @contact.title)
-      redirect_to user_contact_path(@current_user.id, @contact)
+      redirect_to user_path(current_user)
     else
       render "new"
     end
