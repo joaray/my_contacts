@@ -44,4 +44,5 @@ class ContactsController < ApplicationController
   def set_contact
     @contact = Contact.find_by(id: params[:id], user_id: current_user.id)
   end
+  
 end

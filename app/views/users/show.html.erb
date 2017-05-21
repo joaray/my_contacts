@@ -10,8 +10,8 @@
 	<% if c.importance==true %>
 	<%= "VIP" %> 
 	<% end %>
-	<%= link_to 'Edit', edit_user_contact_path(@user, c.id) %> 
-    <%= link_to 'Delete', user_contact_path(@user, c.id), method: :delete %> <br>
+	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
+    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete  %> <br>
 	
 <% end %>
 </p>
