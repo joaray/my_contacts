@@ -8,10 +8,10 @@
 	<%= c.email%> 
     <%= c.phone %> 
 	<% if c.importance==true %>
-	<%= "VIP" %> 
+	<%= image_tag("star.png", :width => 25, :height => 25) %> 
 	<% end %>
 	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
-    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete  %> <br>
+    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
 	
 <% end %>
 </p>
