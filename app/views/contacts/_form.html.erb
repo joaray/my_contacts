@@ -7,10 +7,16 @@
     <%= f.email_field :email %></p>
 <p> <%= f.label :phone %>
     <%= f.text_field :phone %></p>
-<p><%= label :importance, "VIP" %>
-<%= f.check_box :importance %>
+<p> <%= f.label :importance, "VIP" %>
+    <%= f.check_box :importance %>
+<p> <%= f.label :group %>
+    <%= f.select :group, options_for_select(@groups) %>
+
   
 	
 <p> <%= f.submit "Submit" %></p>
 <p>  <%= link_to "Cancel", user_path(:user) %>
 <%end%>
+
+
+

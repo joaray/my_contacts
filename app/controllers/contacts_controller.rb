@@ -2,15 +2,18 @@ class ContactsController < ApplicationController
   
   before_action :set_contact, except: [:new, :create]
 
+  
+  
   def new
     @contact = Contact.new
+	@groups = ["work","friends","family","services"]
   end
 
   def create
     @contact = Contact.new(check_params)
     @contact.user_id = current_user.id
 
-    if @contact.save
+	if @contact.save
       redirect_to user_path(current_user)
     else
       render "new"
@@ -18,7 +21,8 @@ class ContactsController < ApplicationController
   end
 
   def edit
-   
+    @groups = ["work","friends","family","services"]
+	# @amazon_book = AmazonBook.new @book.title
   end
 
   def update
@@ -34,11 +38,11 @@ class ContactsController < ApplicationController
     redirect_to user_path(current_user)
   end
   
-  
+   
   private
 
   def check_params
-      params.require(:contact).permit(:name, :email, :phone, :importance)
+      params.require(:contact).permit(:name, :email, :phone, :importance, :group)
   end
   
   def set_contact
