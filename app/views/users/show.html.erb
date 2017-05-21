@@ -1,9 +1,9 @@
 <h1><%=@user.email%></h1>
 
-
+<h2> Friends </h2>
 <p>
 <% @user.contacts.each do |c| %>
-     
+     <% if c.group == "friends" %>
     <%= c.name %> 
 	<%= c.email%> 
     <%= c.phone %> 
@@ -12,14 +12,82 @@
 	<% else %>
 	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
 	<% end %>
-	<%= c.group %>
+		
+	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
+    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
+<% end %>
 	
+<% end %>
+</p>
+
+<h2> Family </h2>
+<p>
+<% @user.contacts.each do |c| %>
+     <% if c.group == "family" %>
+    <%= c.name %> 
+	<%= c.email%> 
+    <%= c.phone %> 
+	<% if c.importance==true %>
+	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
+	<% else %>
+	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
+	<% end %>
 	
 	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
     <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
 	
 	
 <% end %>
+<% end %>
 </p>
+
+
+
+<h2> Work </h2>
+<p>
+<% @user.contacts.each do |c| %>
+     <% if c.group == "work" %>
+    <%= c.name %> 
+	<%= c.email%> 
+    <%= c.phone %> 
+	<% if c.importance==true %>
+	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
+	<% else %>
+	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
+	<% end %>
+	
+	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
+    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
+	
+	
+<% end %>
+<% end %>
+</p>
+
+
+
+<h2> Services </h2>
+<p>
+<% @user.contacts.each do |c| %>
+     <% if c.group == "services" %>
+    <%= c.name %> 
+	<%= c.email%> 
+    <%= c.phone %> 
+	<% if c.importance==true %>
+	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
+	<% else %>
+	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
+	<% end %>
+	
+	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
+    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
+	
+	
+<% end %>
+<% end %>
+</p>
+
+<br>
+
 
 <%= link_to 'New contact', new_user_contact_path(@user) %>

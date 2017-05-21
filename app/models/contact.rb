@@ -2,15 +2,6 @@ class Contact < ApplicationRecord
 
 belongs_to :user
 
-attr_accessor :osoba
-
-# def initialize
-
-# end
-
-
-@groups = ["work","friends","family","services"]
-
-@osoba_m = "Ala"
+#validates_presence_of :name , message: "What's his/her name?"
 
 end
