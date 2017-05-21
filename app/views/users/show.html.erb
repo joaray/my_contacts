@@ -8,7 +8,9 @@
 	<%= c.email%> 
     <%= c.phone %> 
 	<% if c.importance==true %>
-	<%= image_tag("star.png", :width => 25, :height => 25) %> 
+	<%= image_tag("star_gold.png", :width => 25, :height => 25) %>
+	<% else %>
+	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
 	<% end %>
 	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
     <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
