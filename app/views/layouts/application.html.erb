@@ -9,28 +9,60 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        
-      
-	    <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-          </ul>
-		  
-		  <p class="navbar-text pull-right">
-		  <% if user_signed_in? %>
-			Logged in as <strong><%= current_user.email %></strong>.
-			<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    
+	<div class="navbar-header">
+      <%= link_to(image_tag("star_gold.png", :alt => "logo", :width => 50, :height => 50), root_url) %>
+    </div>
+    
+    <% if user_signed_in? %>
+        <li class="navi">
+          Hello, <%=current_user.email do %>
+          <span class="glyphicon glyphicon-user"/>
           <% end %>
-          </p>
-        </div>
-      </div>
-    </nav>
+        </li>
+        
+        <li class="navi">
+          <%= link_to user_registration_path, method: :delete do %>
+            Delete profile&nbsp;
+            <span class="glyphicon glyphicon-remove"/>
+          <% end %>
+        </li>
+        
+        <li class="navi">
+          <%= link_to new_user_contact_path(current_user) do %>
+            New contact&nbsp;
+            <span class="glyphicon glyphicon-book"/>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li class="navi">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+          <% end %>
+        </li>
+      <% else %>
+        <li class="navi">
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-user"></span> Sign up
+          <% end %>
+        </li>
+        
+        <li class="navi">
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span> Login 
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+  
+  
   
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
