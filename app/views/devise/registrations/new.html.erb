@@ -2,7 +2,13 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-4 text-center">
+		</div>
+  
+		<div class="col-xs-4 text-center">
+			<div class="contact">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -22,8 +28,15 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:'btn btn-default' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+		</div>
+	
+		<div class="col-xs-4 text-center">
+		</div>
+	</div>
+ </div>

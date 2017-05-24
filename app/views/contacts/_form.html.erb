@@ -1,6 +1,13 @@
 
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-4 text-center">
+		</div>
+  
+		<div class="col-xs-4 text-center">
+			<div class="contact">
 <%= form_for [:user,@contact] do |f|%>
+</br>
 <p> <%= f.label :name %>
     <%= f.text_field :name %></p>
 <p> <%= f.label :email %>
@@ -11,12 +18,17 @@
     <%= f.check_box :importance %>
 <p> <%= f.label :group %>
     <%= f.select :group, options_for_select(@groups) %>
+<p>	<%= f.submit 'Submit', class:'btn btn-default'%>
+	<button class="btn btn-default" type="submit"><%= link_to "Cancel", user_path(:user) %></button>
+	<%end%>
+</p>
 
-  
+			</div>
+		</div>
 	
-<p> <%= f.submit "Submit" %></p>
-<p>  <%= link_to "Cancel", user_path(:user) %>
-<%end%>
-
+		<div class="col-xs-4 text-center">
+		</div>
+	</div>
+ </div>
 
 

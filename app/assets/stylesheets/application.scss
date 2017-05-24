@@ -1,0 +1,72 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body{
+background: #e6f0f2;
+}
+
+.header{
+background: #0b6472;
+}
+h2 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #0b6472;
+  font-weight: bold;
+  font: Arial;
+  
+}
+.notice {
+color: #8fe07b;
+font-weight: bold;
+font-size: 2em;
+}
+ 
+.alert {
+color: #b22358;
+font-weight: bold;
+font-size: 2em;
+
+}
+
+a:hover {
+    color: white;
+	background: #258e9f;
+}
+
+
+.center-block {
+  width: 50%;
+  margin: 0 auto;
+}
+ 
+.contact{
+  border-style: solid;
+  border-bottom-color: #258e9f;
+  border-right-color: #258e9f;
+  border-left-color: #258e9f;
+  border-top-color: #258e9f;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background:#ccecf2;
+  margin-bottom: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #258e9f;
+  font-size: 1em;
+  
+ }
+ 
+.list  {
+background: #9cc7ce;
+margin-right: 2px;
+border-bottom-right-radius: 10px;
+border-top-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+
+}

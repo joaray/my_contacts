@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   
   def new
     @contact = Contact.new
-	@groups = ["work","friends","family","services"]
+	@groups = ["family","friends","work","services"]
   end
 
   def create
@@ -21,8 +21,8 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @groups = ["work","friends","family","services"]
-	# @amazon_book = AmazonBook.new @book.title
+    @groups = ["family","friends","work","services"]
+	
   end
 
   def update
