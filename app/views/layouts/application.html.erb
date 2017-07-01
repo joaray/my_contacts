@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MyContact</title>
-      <%= csrf_meta_tags %>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  </head>
+	<head>
+		<title>MyContact</title>
+			<%= csrf_meta_tags %>
+			<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	</head>
 
-  <body>
-<header class="navbar navbar-inverse">
-<div class="header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <div class="navi" <%= link_to(image_tag("star_gold.png", :alt => "logo", :width => 50, :height => 50), root_url) %> </div>
-    </div>
+	<body>
+		<header class="navbar navbar-inverse">
+			<div class="header">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<div class="navi" <%= link_to(image_tag("star_gold.png", :alt => "logo", width: 50, height: 50), root_url) %> </div>
+					</div>
     
-	<ul class="nav navbar-nav">
-      <% if user_signed_in? %>
-        
-     <li class="navbar-text">
-        Hello, <%=current_user.email do %> 
-        <span class="glyphicon glyphicon-user"/>
-        <% end %>
-      </li>	
+					<ul class="nav navbar-nav">
+						<% if user_signed_in? %>
+							<li class="navbar-text">
+								Hello, <%=current_user.email do %> 
+								<span class="glyphicon glyphicon-user"/>
+								<% end %>
+							</li>	
 	  
-      <li class="navi">
-        <%= link_to new_user_contact_path(current_user) do %>
-        New contact&nbsp;
-        <span class="glyphicon glyphicon-book"/>
-        <% end %>
-      </li>
-	  
-	 
-	  
-      <% end %>
-    </ul>
+							<li class="navi">
+								<%= link_to new_user_contact_path(current_user) do %>
+								New contact&nbsp;
+								<span class="glyphicon glyphicon-book"/>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
 	
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-	  <li class="navi">
-        <%= link_to user_registration_path, method: :delete do %>
-          Delete profile&nbsp;
-          <span class="glyphicon glyphicon-remove"/>
-          <% end %>
-      </li>
+					<ul class="nav navbar-nav navbar-right">
+						<% if user_signed_in? %>
+							<li class="navi">
+								<%= link_to user_registration_path, method: :delete do %>
+								Delete profile&nbsp;
+								<span class="glyphicon glyphicon-remove"/>
+								<% end %>
+							</li>
 	  
-        <li class="navi">
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <span class="glyphicon glyphicon-log-out"></span> Log out
-          <% end %>
-        </li>
-      <% else %>
-        <li class="navi">
-          <%= link_to new_user_registration_path do %>
-            <span class="glyphicon glyphicon-user"></span> Sign up
-          <% end %>
-        </li>
-        
-        <li class="navi">
-          <%= link_to new_user_session_path do %>
-            <span class="glyphicon glyphicon-log-in"></span> Login 
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  </div>
-</header>
+							<li class="navi">
+								<%= link_to destroy_user_session_path, method: :delete do %>
+								<span class="glyphicon glyphicon-log-out"></span> Log out
+								<% end %>
+							</li>
+						<% else %>
+							<li class="navi">
+								<%= link_to new_user_registration_path do %>
+								<span class="glyphicon glyphicon-user"></span> Sign up
+								<% end %>
+							</li>
+       
+							<li class="navi">
+								<%= link_to new_user_session_path do %>
+								<span class="glyphicon glyphicon-log-in"></span> Login 
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</header>
   
  
-    <div class="notice">
-      <%= notice %>
-    </div>
+		<div class="notice">
+			<%= notice %>
+		</div>
   
-  <div class="alert"><%= alert %></div>
-    
-  
-  <div class="container">
-    <%= yield %>
-  </div>
-  </body>
+		<div class="alert"><%= alert %>
+		</div>
+			
+		<div class="container">
+			<%= yield %>
+		</div>
+	</body>
 </html>

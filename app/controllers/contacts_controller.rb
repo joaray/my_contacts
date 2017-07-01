@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   
   def new
     @contact = Contact.new
-	@groups = ["family","friends","work","services"]
+	@groups = Contact::GROUPS
   end
 
   def create
@@ -21,13 +21,13 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @groups = ["family","friends","work","services"]
+    @groups = Contact::GROUPS
 	
   end
 
   def update
-  if @contact.update(check_params)
-    redirect_to user_path(current_user)
+    if @contact.update(check_params)
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end
@@ -42,11 +42,11 @@ class ContactsController < ApplicationController
   private
 
   def check_params
-      params.require(:contact).permit(:name, :email, :phone, :importance, :group)
+    params.require(:contact).permit(:name, :email, :phone, :importance, :group)
   end
   
   def set_contact
-    @contact = Contact.find_by(id: params[:id], user_id: current_user.id)
+    @contact = Contact.find(params[:id])
   end
   
 end

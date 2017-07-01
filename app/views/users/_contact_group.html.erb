@@ -1,0 +1,22 @@
+<div class="contact">
+	<%= contact.name %> 
+	<% if contact.importance %> <!--==true niepotrzebne -->
+		<%= image_tag("star_gold.png", width: 25, height: 25) %> 
+	<% else %>
+		<%= image_tag("star_white.png", width: 25, height: 25) %>
+	<% end %>
+	</br>
+	<span class="glyphicon glyphicon-envelope"></span> 
+	<%= contact.email%> 
+	<span class="glyphicon glyphicon-earphone"></span>
+    <%= contact.phone %> 
+	</br>
+	
+	<%= link_to 'Edit', edit_user_contact_path(contact.user, contact) %> 
+    
+	<%= link_to 'Delete', 
+	     user_contact_path(contact.user, contact), 
+		 method: :delete, 
+		 data: { confirm: 'Are you sure?' }   %> 
+</div>
+

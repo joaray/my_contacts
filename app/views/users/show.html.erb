@@ -1,128 +1,20 @@
 <div class="container-fluid">
-<div class="row">
-  
-  <div class="col-xs-3 text-center">
-<div class="list">
-<h2 > Family </h2>
-<p>
-<% @user.contacts.each do |c| %>
-     <% if c.group == "family" %>
-    
-	<div class="contact">
-	<%= c.name %> 
-	
-	<% if c.importance==true %>
-	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
-	<% else %>
-	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
-	<% end %>
-	</br>
-	<span class="glyphicon glyphicon-envelope"></span> 
-<%= c.email%> 
-<span class="glyphicon glyphicon-earphone"></span>
-    <%= c.phone %> 
-	</br>
-	
-	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
-    
-	<%= link_to 'Delete', 
-	     user_contact_path(@user, c), 
-		 method: :delete, 
-		 data: { confirm: 'Are you sure?' }   %> 
-		 </div>
-<% end %>
-
-	
-<% end %>
-</p>
-
- </div>
+  <div class="row">
+    <% @groups.each do |group| %>
+      <div class="col-xs-3 text-center">
+        <div class="list">
+          <h2><%= group.humanize %></h2>
+          <div>
+            <% @contacts.send(group).each do |c| %> 
+			<!-- było dla każdej grupy: 
+			@contacts.family.each do |c| - użyta była nazwa scope 
+			metoda send() wywołuje metodę, której nazwy nie znamy zanim nie uruchomi się kod
+			tutaj: dla każdej grupy nazwą wywoływanej metody jest nazwa grupy-->
+              <%= render 'contact_group', contact: c %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-<div class="col-xs-3 text-center">
-<div class="list">
-<h2> Friends </h2>
-<p>
-<% @user.contacts.each do |c| %>
-     <% if c.group == "friends" %>
-    <div class="contact">
-	<%= c.name %> 
-	 
-	<% if c.importance==true %>
-	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
-	<% else %>
-	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
-	<% end %>
-	</br>
-	<span class="glyphicon glyphicon-envelope"></span> 
-	<%= c.email%> 
-	<span class="glyphicon glyphicon-earphone"></span>
-    <%= c.phone %>
-	</br>
-	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
-    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
-	</div>
-	
-<% end %>
-<% end %>
-</p>
-</div>
- </div>
-<div class="col-xs-3 text-center">
-<div class="list">
-<h2> Work </h2>
-<p>
-<% @user.contacts.each do |c| %>
-     <% if c.group == "work" %>
-	 <div class="contact">
-    <%= c.name %> 
-	<% if c.importance==true %>
-	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
-	<% else %>
-	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
-	<% end %>
-	</br>
-	<span class="glyphicon glyphicon-envelope"></span> 
-	<%= c.email%> 
-	<span class="glyphicon glyphicon-earphone"></span>
-    <%= c.phone %>
-	</br>
-	
-	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
-    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
-	</div>
-	
-<% end %>
-<% end %>
-</p>
-</div>
- </div>
-<div class="col-xs-3 text-center">
-<div class="list">
-<h2> Services </h2>
-<p>
-<% @user.contacts.each do |c| %>
-     <% if c.group == "services" %>
-	 <div class="contact">
-    <%= c.name %> 
-	<% if c.importance==true %>
-	<%= image_tag("star_gold.png", :width => 25, :height => 25) %> 
-	<% else %>
-	<%= image_tag("star_white.png", :width => 25, :height => 25) %>
-	<% end %>
-	</br>
-	<span class="glyphicon glyphicon-envelope"></span> 
-	<%= c.email%> 
-	<span class="glyphicon glyphicon-earphone"></span>
-    <%= c.phone %>
-	</br>
-	
-	<%= link_to 'Edit', edit_user_contact_path(@user, c) %> 
-    <%= link_to 'Delete', user_contact_path(@user, c), method: :delete, data: { confirm: 'Are you sure?' }   %> <br>
-	
-	</div>
-<% end %>
-<% end %>
-</p>
-</div>
-</div>
-

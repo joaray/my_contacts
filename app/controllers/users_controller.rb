@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def show
-    @user = current_user
-	
-  end
+	def show
+		@contacts = current_user.contacts
+		@groups = Contact::GROUPS
+	end
 end
